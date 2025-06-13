@@ -1,0 +1,42 @@
+modules:
+  jira:adminPage:
+    - key: email-templater-hello-world-admin-page
+      resource: main
+      resolver:
+        function: resolver
+      title: email-templater
+      # Triggers for issue creation and update
+  trigger:
+    - key: issue-created-trigger
+      function: issueCreated
+      events:
+        - avi:jira:created:issue
+    - key: issue-updated-trigger
+      function: issueUpdated
+      events:
+        - avi:jira:updated:issue
+  # this is where the trigger functions are defined
+  function:
+    - key: resolver
+      handler: index.handler
+    - key: issueCreated
+      handler: issue-created.run
+    - key: issueUpdated
+      handler: issue-updated.run
+
+resources:
+  - key: main
+    path: static/hello-world/dist
+permissions:
+  content:
+    styles:
+      - unsafe-inline
+  scopes:
+    - read:jira-work
+    - write:jira-work
+app:
+  runtime:
+    name: nodejs22.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/b6765b17-3124-4cae-aa0a-2b2db7190181
