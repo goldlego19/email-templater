@@ -5,24 +5,21 @@ modules:
       resolver:
         function: resolver
       title: email-templater
-      # Triggers for issue creation and update
   trigger:
-    - key: issue-created-trigger
-      function: issueCreated
+    - key: issue-event-trigger
+      function: issueEventHandler
       events:
         - avi:jira:created:issue
-    - key: issue-updated-trigger
-      function: issueUpdated
-      events:
         - avi:jira:updated:issue
-  # this is where the trigger functions are defined
+        - avi:jira:deleted:issue
+        - avi:jira:assigned:issue
+        - avi:jira:viewed:issue
+        - avi:jira:mentioned:issue
   function:
     - key: resolver
       handler: index.handler
-    - key: issueCreated
-      handler: issue-created.run
-    - key: issueUpdated
-      handler: issue-updated.run
+    - key: issueEventHandler
+      handler: issue-event.run
 
 resources:
   - key: main

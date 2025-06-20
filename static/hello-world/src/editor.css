@@ -1,0 +1,30 @@
+.editor-wrapper {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.editor-toolbar {
+  margin-bottom: 0.5rem;
+}
+
+.editor-toolbar button {
+  margin-right: 0.5rem;
+  padding: 4px 8px;
+}
+
+.editor-container {
+  border: 1px solid #eee;
+  min-height: 300px;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.editor-input {
+  min-height: 200px;
+  outline: none;
+}
+
+.editor-placeholder {
+  color: #999;
+}
