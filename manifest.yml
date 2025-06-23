@@ -24,6 +24,8 @@ modules:
 resources:
   - key: main
     path: static/hello-world/dist
+    tunnel:
+      port: 3000
 permissions:
   content:
     styles:

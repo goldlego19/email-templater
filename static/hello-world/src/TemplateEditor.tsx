@@ -5,7 +5,27 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { ToolbarPlugin } from "./ToolbarPlugin";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { $generateHtmlFromNodes } from "@lexical/html";
 import "./editor.css";
+
+function SaveTemplateButton() {
+  const [editor] = useLexicalComposerContext();
+
+  const saveTemplate = () => {
+    editor.update(() => {
+      const htmlString = $generateHtmlFromNodes(editor, null);
+      console.log("HTML Template:", htmlString);
+      // Save htmlString to backend or localStorage as needed
+    });
+  };
+
+  return (
+    <button id="temp-submit" onClick={saveTemplate}>
+      Save Template
+    </button>
+  );
+}
 
 const editorConfig = {
   namespace: "EmailEditor",
@@ -32,6 +52,7 @@ export default function TemplateEditor() {
     <div className="editor-wrapper">
       <LexicalComposer initialConfig={editorConfig}>
         <ToolbarPlugin />
+
         <div className="editor-container">
           <RichTextPlugin
             contentEditable={<ContentEditable className="editor-input" />}
@@ -51,6 +72,7 @@ export default function TemplateEditor() {
             }}
           />
         </div>
+        <SaveTemplateButton />
       </LexicalComposer>
     </div>
   );

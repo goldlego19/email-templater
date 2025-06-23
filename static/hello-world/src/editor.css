@@ -1,6 +1,6 @@
 .editor-wrapper {
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 5px solid #ccc;
+  border-radius: 16px;
   padding: 1rem;
 }
 
@@ -23,17 +23,25 @@
 }
 
 .editor-container {
-  border: 1px solid #eee;
+  border: 2px solid #eee;
   min-height: 300px;
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 8px;
+  position: relative;
 }
 
 .editor-input {
-  min-height: 200px;
+  min-height: 120px;
+  /* Ensure enough height for the placeholder to show */
   outline: none;
 }
 
 .editor-placeholder {
-  color: #999;
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  color: #aaa;
+  pointer-events: none;
+  font-size: 1rem;
+  /* Adjust as needed */
 }
