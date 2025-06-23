@@ -12,6 +12,15 @@
   margin-right: 0.5rem;
   padding: 4px 8px;
 }
+.editor-bold {
+  font-weight: bold;
+}
+.editor-italic {
+  font-style: italic;
+}
+.editor-underline {
+  text-decoration: underline;
+}
 
 .editor-container {
   border: 1px solid #eee;
